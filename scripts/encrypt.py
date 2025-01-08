@@ -14,7 +14,7 @@ def load_key() -> bytes:
     combined = base64.b64decode(data_b64)
     salt = combined[:16]
     key = combined[16:]  # 32 bytes
-    return key  # returning only the key; salt was for derivation time, not needed for AESGCM directly
+    return key 
 
 def encrypt_data(plaintext: bytes, key: bytes) -> bytes:
     """
