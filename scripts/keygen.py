@@ -14,10 +14,10 @@ def generate_key_from_passphrase(passphrase: str, salt: bytes) -> bytes:
     ph = argon2.low_level.hash_secret_raw(
         secret=passphrase.encode('utf-8'),
         salt=salt,
-        time_cost=3,      # CPU cost
-        memory_cost=65536,# 64 MB memory
+        time_cost=3,      
+        memory_cost=65536,
         parallelism=1,
-        hash_len=32,      # 32 bytes => 256 bits
+        hash_len=32,      
         type=argon2.low_level.Type.ID
     )
     return ph
@@ -35,13 +35,13 @@ def main():
         return
 
     # Generate random salt
-    salt = os.urandom(16)  # 128-bit salt
+    salt = os.urandom(16) 
 
     # Derive the key
     key = generate_key_from_passphrase(passphrase, salt)
 
     # Combine salt + key
-    combined = salt + key  # 16 bytes salt + 32 bytes key = 48 bytes total
+    combined = salt + key 
 
     # Encode in base64 to store
     combined_b64 = base64.b64encode(combined)
