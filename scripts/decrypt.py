@@ -10,7 +10,7 @@ def load_key() -> bytes:
     with open(KEY_FILE, "rb") as f:
         data_b64 = f.read().strip()
     combined = base64.b64decode(data_b64)
-    key = combined[16:]  # skip the salt (16 bytes), keep the 32-byte key
+    key = combined[16:]  
     return key
 
 def decrypt_data(encrypted: bytes, key: bytes) -> bytes:
@@ -20,7 +20,7 @@ def decrypt_data(encrypted: bytes, key: bytes) -> bytes:
     nonce = encrypted[:12]
     ciphertext = encrypted[12:]
     aesgcm = AESGCM(key)
-    plaintext = aesgcm.decrypt(nonce, ciphertext, None)  # no AAD
+    plaintext = aesgcm.decrypt(nonce, ciphertext, None)  
     return plaintext
 
 def main():
