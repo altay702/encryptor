@@ -28,9 +28,9 @@ function decrypt_file() {
 function main_menu() {
   while true; do
     echo "---------------------------------"
-    echo "  Encryption Tool"
+    echo "  Encryptor made by Altay702"
     echo "---------------------------------"
-    echo "1) Generate/Update Key"
+    echo "1) Generate or Update Key"
     echo "2) Encrypt File"
     echo "3) Decrypt File"
     echo "4) Exit"
